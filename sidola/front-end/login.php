@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form method="POST">
         <h2>Login</h2>
         <?php if (isset($error)) echo "<p class='error-message'>$error</p>"; ?>
-        <input name="username" placeholder="Username" required>
+        <input name="username" type="username" placeholder="Username" required>
         <input name="password" type="password" placeholder="Password" required>
         <button type="submit">Login</button>
         <div class="notice">Belum punya akun? <a href="register.php">Daftar</a></div>

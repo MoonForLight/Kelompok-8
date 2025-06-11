@@ -76,7 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['role'])) {
                 <option value="admin">Admin</option>
                 <option value="staff">Staff</option>
                 <option value="idol">Idol</option>
-                <option value="penggemar">Penggemar</option>
             </select>
         </div>
 
