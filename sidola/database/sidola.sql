@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2025 at 04:32 AM
+-- Generation Time: Jun 11, 2025 at 07:39 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `sidola`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `merchandise_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -98,6 +112,49 @@ INSERT INTO `likes` (`id`, `post_id`, `user_id`, `created_at`) VALUES
 (62, 20, 21, '2025-06-03 02:22:47'),
 (63, 19, 21, '2025-06-03 02:22:49'),
 (64, 18, 21, '2025-06-03 02:22:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `merchandise`
+--
+
+CREATE TABLE `merchandise` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `merchandise_orders`
+--
+
+CREATE TABLE `merchandise_orders` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `total_price` decimal(10,2) NOT NULL,
+  `order_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `merchandise_order_items`
+--
+
+CREATE TABLE `merchandise_order_items` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `merchandise_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -208,6 +265,14 @@ INSERT INTO `users` (`id`, `username`, `password`, `role`, `email`, `profile_pic
 --
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `merchandise_id` (`merchandise_id`);
+
+--
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
@@ -224,6 +289,27 @@ ALTER TABLE `follows`
 --
 ALTER TABLE `likes`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `merchandise`
+--
+ALTER TABLE `merchandise`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `merchandise_orders`
+--
+ALTER TABLE `merchandise_orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `merchandise_order_items`
+--
+ALTER TABLE `merchandise_order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `merchandise_id` (`merchandise_id`);
 
 --
 -- Indexes for table `messages`
@@ -257,6 +343,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
@@ -273,6 +365,24 @@ ALTER TABLE `follows`
 --
 ALTER TABLE `likes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
+-- AUTO_INCREMENT for table `merchandise`
+--
+ALTER TABLE `merchandise`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `merchandise_orders`
+--
+ALTER TABLE `merchandise_orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `merchandise_order_items`
+--
+ALTER TABLE `merchandise_order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -301,6 +411,26 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`merchandise_id`) REFERENCES `merchandise` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `merchandise_orders`
+--
+ALTER TABLE `merchandise_orders`
+  ADD CONSTRAINT `merchandise_orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `merchandise_order_items`
+--
+ALTER TABLE `merchandise_order_items`
+  ADD CONSTRAINT `merchandise_order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `merchandise_orders` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `merchandise_order_items_ibfk_2` FOREIGN KEY (`merchandise_id`) REFERENCES `merchandise` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `staff_idol`
