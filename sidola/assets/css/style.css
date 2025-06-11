@@ -1,0 +1,806 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #ece9e6, #ffffff);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 25px 30px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+h2, h3 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+button {
+    padding: 10px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+/* Kartu Postingan */
+.card {
+    background: #f9f9f9;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card img,
+.card video {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Header Postingan */
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.poster-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #2c3e50;
+    gap: 10px;
+}
+
+/* Avatar di home/postingan */
+.poster-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+
+.poster-username {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* Komentar */
+.comment-section {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 12px;
+}
+
+.comment-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.comment-input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+}
+
+.comment-button {
+    padding: 8px 14px;
+    background: #3498db;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.comment-button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f5f5f5;
+    border: 1px solid #e1e1e1;
+}
+
+.circle-thumb-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #bbb;
+}
+
+.comment-text {
+    flex: 1;
+}
+
+.comment-text strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+.comment-text span {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
+}
+
+/* Navigasi */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background: #202020;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 0 0 10px 10px;
+}
+
+.avatar-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #aaa;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: #333;
+    padding: 10px 0;
+    border-radius: 8px;
+    z-index: 100;
+    min-width: 150px;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    background: #444;
+    border-radius: 5px;
+}
+
+/* Edit Profil */
+.profile-preview {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-preview img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.delete-link {
+    font-size: 14px;
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.delete-link:hover {
+    text-decoration: underline;
+}
+
+/* View Profile - Halaman Idol */
+.profile-container {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    text-align: center;
+    position: relative;
+}
+
+.profile-header img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.back-home {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+    padding: 0 10px;
+    line-height: 1;
+}
+
+.stat-box {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.stat-box div {
+    text-align: center;
+}
+
+.post {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Header postingan per post */
+.post-header-inline {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Avatar di dalam postingan */
+.avatar-small {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Konten media */
+.media-image {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.media-video {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Komentar */
+.comment {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.comment img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Input komen */
+.comment-wide {
+    width: 80%;
+}
+
+.btn-follow {
+    padding: 8px 16px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-unfollow {
+    padding: 8px 16px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-follow:hover {
+    background-color: #27ae60;
+}
+
+.btn-unfollow:hover {
+    background-color: #c0392b;
+}
+
+.header-relative {
+    position: relative;
+}
+
+.follow-form {
+    margin-top: 10px;
+}
+
+.nav-link {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+}
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.avatar-large {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.profile-info h2 {
+    margin: 0;
+}
+.card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: #fff;
+}
+.comment-list {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+.comment-item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.comment-text {
+    background: #f0f0f0;
+    padding: 6px 10px;
+    border-radius: 6px;
+    width: 100%;
+}
+.delete-btn {
+    color: red;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.poster-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.poster-username {
+    font-weight: bold;
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 22px;
+    text-decoration: none;
+    color: #555;
+    background: #f0f0f0;
+    padding: 5px 12px;
+    border-radius: 50%;
+    transition: 0.2s ease;
+}
+.close-btn:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-chat {
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+body.chat-dark {
+    background: #000;
+    color: white;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.chat-bubble.left {
+    background: #2a2a2a;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+
+.chat-bubble.right {
+    background: #1d9bf0;
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+}
+
+.chat-form input[type="text"] {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: #111;
+    color: white;
+    font-size: 14px;
+}
+
+.chat-form button {
+    background: #1d9bf0;
+    border: none;
+    padding: 15px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+body.chat-dark {
+    background: #000;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+}
+
+.chat-bubble.left {
+    background: #2a2a2a;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-bubble.right {
+    background: #1d9bf0;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-form input[type="text"] {
+    flex: 1;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 20px;
+    background: #1a1a1a;
+    color: white;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.chat-form button {
+    background: #1d9bf0;
+    border: none;
+    padding: 10px 18px;
+    color: white;
+    font-size: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.chat-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 600px;
+    height: 90vh;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(255,255,255,0.1);
+}
+
+.chat-back {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 20px;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+}
+
+.chat-header {
+    background: #111;
+    padding: 15px 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #222;
+}
+
+.chat-idol-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #555;
+}
+
+.chat-idol-name {
+    color: #fff;
+    font-size: 16px;
+}
+
+.inbox-box {
+    background: #f9f9f9;
+    border-left: 5px solid #3498db;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+.inbox-box a {
+    text-decoration: underline;
+    color: #2980b9;
+    font-weight: bold;
+}
+
+.avatar-icon.dynamic {
+    background-size: cover;
+    background-position: center;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    color: green;
+    margin-bottom: 10px;
+}
+
+.relative {
+    position: relative;
+}
+
+img.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.media {
+    margin-top: 5px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+#avatarIcon {
+  background-image: var(--avatar-url);
+}
+
+.profile-posting-title {
+  margin-top: 30px;
+}
+
+.chat-header {
+    background: #111;
+    padding: 15px 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #222;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    max-width: 600px;
+    width: 100%;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(255,255,255,0.1);
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-bubble {
+    max-width: 70%;
+    padding: 12px;
+    border-radius: 18px;
+    position: relative;
+    word-wrap: break-word;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.chat-form {
+    display: flex;
+    border-top: 1px solid #222;
+    padding: 10px 15px;
+    background: #111;
+}
+
+.chat-time {
+    font-size: 11px;
+    color: #aaa;
+    text-align: right;
+    margin-top: 4px;
+}
+
+/* Navbar */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-link {
+    text-decoration: none;
+    padding: 8px 12px;
+    color: white;
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+}
+
+.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Kartu Merchandise */
+.product-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin: 20px auto;
+    text-align: center;
+    max-width: 300px;
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.product-card p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    margin: 8px 4px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* Tombol Kembali */
+.btn-back {
+    display: inline-block;
+    padding: 8px 14px;
+    margin-top: 12px;
+    background-color: #95a5a6;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn-back:hover {
+    background-color: #7f8c8d;
+}
