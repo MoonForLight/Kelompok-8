@@ -5,11 +5,14 @@ include "../database/db.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = hash('sha256', $_POST['password']);
+    $email = $_POST['email'];
     $role = $_POST['role'];
 
+    // Cek apakah username sudah digunakan
     $check = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
     if (mysqli_num_rows($check) == 0) {
-        mysqli_query($conn, "INSERT INTO users (username, password, role) VALUES ('$username', '$password', '$role')");
+        // Insert user baru dengan email
+        mysqli_query($conn, "INSERT INTO users (username, password, email, role) VALUES ('$username', '$password', '$email', '$role')");
         $success = "Berhasil daftar! <a href='../front-end/login.php'>Login sekarang</a>";
     } else {
         $error = "Username sudah digunakan.";

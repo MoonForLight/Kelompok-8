@@ -2,7 +2,9 @@
 session_start();
 include "../database/db.php";
 
-if ($_SESSION['user']['role'] !== 'staff') exit("Akses ditolak.");
+if (in_array($_SESSION['user']['role'], ['penggemar'])) {
+    exit("Akses ditolak.");
+}
 
 $post_id = intval($_GET['id']);
 $idol_id = intval($_GET['idol']);

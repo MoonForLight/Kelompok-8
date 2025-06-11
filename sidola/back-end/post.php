@@ -3,13 +3,14 @@ session_start();
 include "../database/db.php";
 
 $user = $_SESSION['user'];
-$content = $_POST['content'];
+$content = $_POST['content'] ?? '';
 $uid = $user['id'];
 
 $media = $_FILES['media'];
 $filename = "";
 $type = "none";
 
+// Cek apakah ada media diupload
 if ($media['name']) {
     $filename = time() . "_" . basename($media['name']);
     $target = "../assets/uploads/" . $filename;
@@ -35,6 +36,14 @@ if ($media['name']) {
     }
 }
 
+// Validasi: jangan izinkan post kosong semua
+if (empty($content) && $type === 'none') {
+    $_SESSION['error'] = "Tidak boleh posting kosong tanpa teks dan tanpa media.";
+    header("Location: ../front-end/home.php");
+    exit();
+}
+
+// Simpan ke database
 mysqli_query($conn, "INSERT INTO posts (user_id, content, media, media_type) 
     VALUES ('$uid', '$content', '$filename', '$type')");
 

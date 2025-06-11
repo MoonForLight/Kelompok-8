@@ -53,7 +53,7 @@ $comment_query = mysqli_query($conn, "
                     <?php endif; ?>
                 <?php endif; ?>
                 <p>
-                    <a href="../../back-end/delete_post.php?id=<?= $post['id'] ?>" class="delete-link">🗑️ Hapus Postingan</a>
+                    <a href="../../back-end/admin/delete_post.php?id=<?= $post['id'] ?>" class="delete-link">🗑️ Hapus Postingan</a>
                 </p>
             </div>
         <?php endwhile; ?>
